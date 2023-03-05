@@ -96,11 +96,14 @@ const browser = await chromium.launch()
 
   const page = await browser.newPage();
 
+
   const content = await compile('flight', {amount,orderId,flightBook,paymentCreate,adult,child,infants,dates,travelOptions})
 
   await page.setContent(content)
 
   await page.goto('https://hotel-booking-7efu.onrender.com')
+
+  await page.setViewport({width:1792,height:934})
 
   await page.pdf({
     path:'flight.pdf',
