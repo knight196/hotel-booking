@@ -13,6 +13,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer'); 
+const {chromium} =require('playwright')
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
@@ -91,19 +92,13 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-const browser = await puppeteer.launch({
-  headless:true,
-  args:['--no-sandbox'],
-})
+const browser = await chromium.launch()
 
   const page = await browser.newPage();
 
   const content = await compile('flight', {amount,orderId,flightBook,paymentCreate,adult,child,infants,dates,travelOptions})
 
-  await page.setContent(content, {
-    timeout:3000,
-    waitUntil:'networkidle0'
-  })
+  await page.setContent(content)
 
   await page.goto('https://hotel-booking-7efu.onrender.com')
 
@@ -170,20 +165,14 @@ app.post('/api/hotelemail', async (req,res) => {
 const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.body
 
   try{
-  const browser = await puppeteer.launch({
-    headless:true,
-    args:['--no-sandbox'],
-  })
+  const browser = await chromium.launch()
 
     const page = await browser.newPage();
 
   
     const content = await hotelCompile('hotel', {orderId,basket,travel,availabelRooms,availabelRoomId,amount,email})
 
-    await page.setContent(content, {
-      timeout:3000,
-      waitUntil:'networkidle0'
-    })
+    await page.setContent(content)
 
     await page.goto('https://hotel-booking-7efu.onrender.com')
 
