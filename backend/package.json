@@ -24,6 +24,7 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.21",
     "path": "^0.12.7",
+    "puppeteer": "^19.7.2",
     "stripe": "^11.13.0"
   }
 }
