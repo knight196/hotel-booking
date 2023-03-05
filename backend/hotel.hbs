@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+
+.d-flex{
+ display:flex;
+ align-items: center;
+ justify-content: space-between;   
+}
+
+.d-flex2{
+display:flex;
+align-items: center;
+justify-content: center;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.w-100{
+    width:100%
+}
+.h-100{
+    height:100%
+}
+
+    </style>
+
+
+</head>
+<body>
+    
+
+<h5>BookingId: {{orderId}}</h5>
+
+<div class="d-flex">
+<img style="width:200px;height:150px;" src={{basket.image}} alt={{basket.title}}/>
+
+<div>
+
+<p>Hotel-Name: {{basket.title}}</p>
+<p>Location: {{basket.location}}</p>
+<p>Email: {{email}}</p>
+
+</div>
+
+</div>
+
+
+<div class="d-flex">
+
+<p>Room: {{basket.rooms}}</p>
+
+<p>Room-Price: {{basket.roomPrice}}</p>
+
+<p>Options: {{basket.roomOptions}}</p>
+
+</div>
+
+<div class="d-flex">
+
+<p>Stay: {{travel}}-Nights</p>
+
+<p>Amount: £{{amount}}</p>
+
+{{#each basket.dates}}
+<p>Start-Date: {{{datesplit this.startDate}}} - EndDate: {{{datesplit this.endDate}}}</p>
+{{/each}}
+</div>
+
+
+</body>
+</html>

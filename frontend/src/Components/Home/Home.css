@@ -1,0 +1,177 @@
+.Homepage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("https://static.arocdn.com/Sites/50/imperialhotels2022/uploads/images/FullLengthImages/Large/R.N_Twin_2_3.jpg");
+  background-size: cover;
+}
+
+.Homepage > div {
+  background: darkgrey;
+  padding: 20px;
+  border: 2px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+hr {
+  border: 2px solid whitesmoke;
+  width: 100%;
+}
+
+.active-tab {
+  width: 100%;
+  border: 1px solid black;
+  background: darkcyan;
+}
+
+.tab {
+  width: 100%;
+  border: 0;
+  border: 1px solid black;
+}
+
+.active-contents {
+  display: block;
+}
+
+.contents {
+  display: none;
+}
+
+.sticky-info {
+  position: absolute;
+  top: 20%;
+  right: 10px;
+  text-align: center;
+  background: whitesmoke;
+  padding: 10px;
+}
+
+.Travel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("https://images.travelandleisureindia.in/wp-content/uploads/2021/04/20150141/Featured-Image-6-1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.Travel > div {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border: 2px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.departure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.departure > i {
+  margin: 10px 0;
+}
+
+.radio-active {
+  display: block;
+}
+
+.radio-content {
+  display: none;
+}
+
+.flightclass-tabs {
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  background: orange;
+}
+
+.classtabs {
+  background: orange;
+  padding: 5px 10px;
+  border: none;
+  padding: 5px 20px;
+}
+
+.Class-choice {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 720px) {
+  .departure {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .departure > i {
+    margin: 10px;
+  }
+  .Class-choice {
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=Home.css.map */

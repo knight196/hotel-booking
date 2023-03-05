@@ -1,0 +1,96 @@
+.flight-card {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+}
+
+.flight-details {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+}
+
+.data-card {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+}
+
+.data-details {
+  width: 100% !important;
+}
+
+.flight-payment {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: reverse !important;
+      -ms-flex-direction: column-reverse !important;
+          flex-direction: column-reverse !important;
+}
+
+.flight-payment-details {
+  width: 100% !important;
+}
+
+.flight-final-payment {
+  width: 100% !important;
+}
+
+.plane {
+  position: relative;
+  background: black;
+  width: 100%;
+  border: 2px solid grey;
+}
+
+.fa-plane {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  font-size: 16px;
+}
+
+.left-plane {
+  position: absolute;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  top: 8px;
+}
+
+@media screen and (min-width: 720px) {
+  .flight-card {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  .data-card {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  .data-details {
+    width: 50% !important;
+  }
+  .flight-payment {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  .flight-final-payment {
+    margin: 10px !important;
+  }
+  .flight-details {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+}
+/*# sourceMappingURL=Travellist.css.map */

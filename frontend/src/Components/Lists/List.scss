@@ -1,0 +1,44 @@
+.list{
+    flex-direction: column;
+}
+.search-option{
+width:100%;
+}
+.options-per-night{
+    input{
+        width:100%;
+    }
+}
+
+
+@media screen and (min-width:720px){
+    .list{
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+    .search-option{
+    width:100%;
+    height:100%;
+    }
+    .options-per-night{
+       flex-direction: column !important;
+    }
+    .card-list{
+        margin:0 !important;
+    }
+}
+@media screen and (min-width:1020px){
+    .list{
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+    .search-option{
+    width:50%;
+    }
+    .options-per-night{
+        display:flex;
+        align-items: center; 
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,86 @@
+.active-tabs{
+    border-top:3px solid black;
+    color:white;
+    background:darkcyan;
+    margin:0 10px;
+    padding:5px 10px;
+}
+.tabs{
+    background:darkcyan;
+    margin:10px;
+    padding:5px 10px;
+}
+
+.tabs-block{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+.content{
+    border-top: 2px solid black;
+    display:none;
+}
+.content-tabs{
+    text-align: center;
+    margin-top:10px;
+}
+.active-content{
+    display:block;
+}
+
+.flight-booking{
+    flex-direction:column !important;
+}
+
+body{
+    background:rgb(208, 207, 207) !important;
+}
+.flight-booking-info{
+    flex-direction: column !important;
+}
+
+.flightbook-payment-details{
+ width:100% !important ;  
+ margin:0 0 !important;
+}
+.flight-return{
+    display:flex;
+    flex-direction: column !important;
+}
+
+.plane{
+    position:relative;
+    background:black;
+    width:100%;
+    border:2px solid grey;
+}
+.fa-plane{
+    position:absolute;
+    top:-8px;
+    right:0;
+    left:0;
+    bottom:0;
+    font-size: 16px;
+}
+.left-plane{
+    position:absolute;
+    transform: rotate(180deg);
+    top:8px;
+}
+
+@media screen and (min-width:720px){
+    .tabs-block{
+        flex-direction: row;
+    }
+    .flight-booking{
+        flex-direction: row !important;
+    }
+    .flight-booking-info{
+        flex-direction: row !important;
+    }
+    .flightbook-payment-details{
+        width:50% !important;
+        margin:10px 10px !important;
+    }
+}

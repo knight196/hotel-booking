@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+.d-flex{
+ display:flex;
+ align-items: center;
+ justify-content: space-between;   
+}
+
+.text-center{
+    text-align: center;
+}
+
+.w-100{
+    width:100%
+}
+.h-100{
+    height:100%
+}
+
+    </style>
+
+
+</head>
+<body>
+
+
+<div>
+<h1>Outbound</h1>
+
+<div class="d-flex">
+
+{{#each flightBook}}
+<div>
+<img style="width:200px;height:100px;" src={{this.details.Depart.flightLogo}} alt={{this.details.Depart.title}} />
+<p>{{this.details.Depart.Class}}</p>
+</div>
+{{/each}}
+
+<p>BookingId: {{orderId}}</p>
+
+<div>
+<p style="text-transform:uppercase;">{{travelOptions}}</p>
+{{#each dates}}
+
+<p>{{slice this.startDate}}</p>
+
+{{/each}}
+</div>
+
+</div>
+
+{{!-- end of the header --}}
+
+{{!-- start of the body --}}
+
+{{#each flightBook}}
+
+<div class="d-flex">
+
+<div class="text-center">
+<h3>{{this.details.Depart.Depart}}</h3>
+<h2>{{this.details.Depart.DepartTime}}</h2>
+</div>
+
+<div class="w-100">
+    <hr>
+</div>
+
+<div>
+    <h3>{{this.details.Depart.Transit}}</h3>
+    <h3>{{this.details.Depart.TransitArrival}}</h3>
+
+   <div className="text-center">
+        <h5>{{this.details.Depart.Plane}}</h5>
+        <h5>{{this.details.Depart.FlightNo}}</h5>
+        </div>
+
+</div>
+
+
+
+</div>
+
+<div class="d-flex">
+
+<div class="text-center">
+<h3>{{this.details.Depart.Transit}}</h3>
+<h3>{{this.details.Depart.TransitFlightTime}}</h3>
+</div>
+
+<div class="w-100">
+<hr>
+</div>
+
+<div class="text-center">
+<h3>{{this.details.Depart.Arrival}}</h3>
+<h3>{{this.details.Depart.ArrivalTime}}</h3>
+
+ <div className="text-center">
+        <h5>{{this.details.Depart.TransitPlane}}</h5>
+        <h5>{{this.details.Depart.TransitFlightNo}}</h5>
+        </div>
+</div>
+
+</div>
+
+
+</div>
+
+{{!-- end of the body --}}
+
+
+
+</div>
+
+{{/each}}
+
+<hr>
+
+{{#if (conditional travelOptions)}}
+
+<div></div>
+
+{{else}}
+
+<div>
+    
+     <h1>Return</h1>
+<div class="d-flex">
+
+{{#each flightBook}}
+
+
+<div>
+<img style="width:200px;height:100px;" src={{this.details.Return.flightLogo}} alt={{this.details.Depart.title}} />
+<p>{{this.details.Return.Class}}</p>
+</div>
+
+{{/each}}
+
+
+    {{#each dates}}
+<p>{{slice this.endDate}}</p>
+{{/each}}
+
+</div>
+
+{{!-- end of the header --}}
+
+{{!-- start of the body --}}
+
+{{#each flightBook}}
+
+<div class="d-flex">
+
+<div class="text-center">
+<h3>{{this.details.Return.Depart}}</h3>
+<h2>{{this.details.Return.DepartTime}}</h2>
+</div>
+
+<div class="w-100">
+    <hr>
+</div>
+
+<div>
+    <h3>{{this.details.Return.Transit}}</h3>
+    <h3>{{this.details.Return.TransitArrival}}</h3>
+
+   <div className="text-center">
+        <h5>{{this.details.Return.Plane}}</h5>
+        <h5>{{this.details.Return.FlightNo}}</h5>
+        </div>
+
+</div>
+
+
+
+</div>
+
+<div class="d-flex">
+
+<div class="text-center">
+<h3>{{this.details.Return.Transit}}</h3>
+<h3>{{this.details.Return.TransitFlightTime}}</h3>
+</div>
+
+<div class="w-100">
+<hr>
+</div>
+
+<div class="text-center">
+<h3>{{this.details.Return.Arrival}}</h3>
+<h3>{{this.details.Return.ArrivalTime}}</h3>
+
+ <div className="text-center">
+        <h5>{{this.details.Return.TransitPlane}}</h5>
+        <h5>{{this.details.Return.TransitFlightNo}}</h5>
+        </div>
+</div>
+
+</div>
+
+{{/each}}
+
+</div>
+
+{{!-- end of the body --}}
+
+<hr>
+
+</div>
+{{/if}}
+
+
+
+
+
+{{!-- start of the passengers --}}
+<div class="d-flex">
+
+<div>
+
+<h1>Passengers: </h1>
+
+<p>Adult: {{adult}}</p>
+<p>Child: {{child}}</p>
+<p>Infants: {{infants}}</p>
+
+</div>
+
+{{!-- end of the passengers --}}
+
+<hr>
+
+{{!-- start of the payment --}}
+<div>
+
+
+<div>
+<h1>TotalAmount: £{{amount}}</h1>
+</div>
+
+<div>
+<h1>Payment Details:</h1>
+
+<p>Payment-Type: {{paymentCreate.card.brand}}</p>
+<p>Ending: {{paymentCreate.card.last4}}</p>
+</div>
+
+</div>
+
+</div>
+
+
+{{!-- end of the payment --}}
+    
+</body>
+</html>

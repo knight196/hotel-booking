@@ -1,0 +1,23 @@
+.searchitem {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+}
+
+.img-div {
+  width: 100% !important;
+}
+
+@media screen and (min-width: 720px) {
+  .searchitem {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  .img-div {
+    width: 50% !important;
+  }
+}
+/*# sourceMappingURL=searchItem.css.map */

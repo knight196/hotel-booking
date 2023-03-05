@@ -1,0 +1,91 @@
+.hotel-images{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+
+.hotelimgwrapper{
+    width:33%;
+}
+
+.hotelimg{
+    width:100%;
+    object-fit:cover;
+}
+
+.slider{
+    position:sticky;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100vh;
+    width:100vw;
+    background:rgba(0,0,0,0.426);
+    z-index:1;
+    display:flex;
+    align-items: center;
+}
+.fa-circle-xmark{
+position:absolute;
+font-size: 30px;
+top:0;
+right:0;
+}
+.sliderWrapper{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliderImg{
+    width:80%;
+    height:80vh;
+}
+.availabelRooms{
+    position:relative;
+}
+.fully-booked{
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    background:whitesmoke;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    opacity:0.6;
+    font-size: 20px;
+    text-transform: uppercase;
+    height:100%;
+    pointer-events:none;
+}
+.availabelRooms{
+    & > div {
+      flex-wrap: wrap
+    }
+    
+}
+
+.description{
+    flex-wrap: wrap;
+
+    & > div:nth-child(2){
+        width:100% !important;
+    }
+}
+
+@media screen and (min-width:1020px){
+    .description{
+        flex-wrap: nowrap;
+
+        
+    & > div:nth-child(2){
+        width:50% !important;
+    }
+    }
+}

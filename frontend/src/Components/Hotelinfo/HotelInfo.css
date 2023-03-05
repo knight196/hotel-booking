@@ -1,0 +1,118 @@
+.hotel-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.hotelimgwrapper {
+  width: 33%;
+}
+
+.hotelimg {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.slider {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.426);
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fa-circle-xmark {
+  position: absolute;
+  font-size: 30px;
+  top: 0;
+  right: 0;
+}
+
+.sliderWrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sliderImg {
+  width: 80%;
+  height: 80vh;
+}
+
+.availabelRooms {
+  position: relative;
+}
+
+.fully-booked {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  background: whitesmoke;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.6;
+  font-size: 20px;
+  text-transform: uppercase;
+  height: 100%;
+  pointer-events: none;
+}
+
+.availabelRooms > div {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.description {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.description > div:nth-child(2) {
+  width: 100% !important;
+}
+
+@media screen and (min-width: 1020px) {
+  .description {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .description > div:nth-child(2) {
+    width: 50% !important;
+  }
+}
+/*# sourceMappingURL=HotelInfo.css.map */

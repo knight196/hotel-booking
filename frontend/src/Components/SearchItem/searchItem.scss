@@ -1,0 +1,16 @@
+.searchitem{
+    flex-direction: column !important;
+}
+
+.img-div{
+    width:100% !important;
+}
+
+@media screen and (min-width:720px){
+    .searchitem{
+        flex-direction: row !important;
+    }
+    .img-div{
+        width:50% !important;
+    }
+}
