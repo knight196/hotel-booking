@@ -13,6 +13,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer'); 
+const {executablePath} = require('puppeteer')
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
@@ -93,7 +94,7 @@ app.post('/api/sendemail', async(req,res) => {
 
 const browser = await puppeteer.launch({
   args:['--no-sandbox'],
-  executablePath:process.env.CHROMIUM_PATH
+  executablePath:executablePath()
 })
 
   const page = await browser.newPage();
@@ -169,7 +170,7 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
   try{
   const browser = await puppeteer.launch({
     args:['--no-sandbox'],
-    executablePath:process.env.CHROMIUM_PATH
+    executablePath:executablePath()
   })
 
     const page = await browser.newPage();
