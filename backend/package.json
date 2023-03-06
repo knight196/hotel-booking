@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npx puppeteer install chromium",
-    "postci": "npx puppeteer install chromium",
     "start": "node server.js"
   },
   "author": "",
