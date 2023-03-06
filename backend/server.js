@@ -108,7 +108,6 @@ const browser = await puppeteer.launch({
 
   await page.goto('https://hotel-booking-7efu.onrender.com')
 
-  await page.setViewport({width:1792,height:934})
 
   await page.pdf({
     path:'flight.pdf',
