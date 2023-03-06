@@ -12,8 +12,7 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer'); 
-const pcr = require('puppeteer-chromium-resolver')
+const puppeteer = require('puppeteer-core'); 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
 
@@ -91,16 +90,10 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-   const options = {}
-
-    const stats = await pcr(options)
-
-    process.env.PUPPETEER_EXECUTABLE_PATH = stats.executablePath
-
 const browser = await puppeteer.launch({
   headless: false,
-    args: ["--no-sandbox"],
-    executablePath: stats.executablePath
+    args: ["--no-sandbox",'--disable-dev-shm-usage'],
+    executablePath:"C:\Users\knight\Downloads\chrome-win\chrome-win"
 })
 
   const page = await browser.newPage();
@@ -178,10 +171,7 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
   try{
   const browser = await puppeteer.launch({
     args:["--no-sandbox"],
-    product:"chrome",
     headless:false,
-    devtools:true,
-    defaultViewport:{width:500,height:459}
   })
 
     const page = await browser.newPage();
