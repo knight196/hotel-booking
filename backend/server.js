@@ -96,7 +96,8 @@ const browser = await puppeteer.launch({
     product:"chrome",
     headless:false,
     devtools:true,
-    defaultViewport:{width:500,height:459}
+    defaultViewport:{width:500,height:459},
+    executablePath:'./node_modules/puppeteer/.local-chromium/win64-656675/chrome-win/chrome.exe'
 })
 
   const page = await browser.newPage();
