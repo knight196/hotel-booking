@@ -91,7 +91,13 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-const browser = await puppeteer.launch()
+const browser = await puppeteer.launch({
+  args:["--no-sandbox"],
+    product:"chrome",
+    headless:false,
+    devtools:true,
+    defaultViewport:{width:500,height:459}
+})
 
   const page = await browser.newPage();
 
@@ -167,7 +173,13 @@ app.post('/api/hotelemail', async (req,res) => {
 const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.body
 
   try{
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+    args:["--no-sandbox"],
+    product:"chrome",
+    headless:false,
+    devtools:true,
+    defaultViewport:{width:500,height:459}
+  })
 
     const page = await browser.newPage();
 
