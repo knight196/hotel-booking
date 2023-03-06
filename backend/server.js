@@ -92,8 +92,10 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
    const options = {}
-   
+
     const stats = await pcr(options)
+
+    process.env.PUPPETEER_EXECUTABLE_PATH = stats.executablePath
 
 const browser = await puppeteer.launch({
   headless: false,
