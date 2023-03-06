@@ -93,7 +93,6 @@ app.post('/api/sendemail', async(req,res) => {
 const browser = await puppeteer.launch({
   headless: false,
     args: ["--no-sandbox",'--disable-dev-shm-usage'],
-    executablePath:"C:\Users\knight\Downloads\chrome-win\chrome-win"
 })
 
   const page = await browser.newPage();
