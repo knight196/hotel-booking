@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer'); 
-
+const pcr = require('puppeteer-chromium-resolver')
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
 
@@ -91,13 +91,14 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
+   const options = {}
+   
+    const stats = await pcr(options)
+
 const browser = await puppeteer.launch({
-  args:["--no-sandbox"],
-    product:"chrome",
-    headless:false,
-    devtools:true,
-    defaultViewport:{width:500,height:459},
-    executablePath:'./node_modules/puppeteer/.local-chromium/win64-656675/chrome-win/chrome.exe'
+  headless: false,
+    args: ["--no-sandbox"],
+    executablePath: stats.executablePath
 })
 
   const page = await browser.newPage();
