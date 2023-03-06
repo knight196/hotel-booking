@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npx playwright install chromium",
-    "postci": "npx playwright install chromium",
+    "postinstall": "npx puppeteer install chromium",
+    "postci": "npx puppeteer install chromium",
     "start": "node server.js"
   },
   "author": "",
@@ -30,7 +30,6 @@
     "stripe": "^11.13.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.31.2",
     "nodemon": "^2.0.21"
   }
 }
