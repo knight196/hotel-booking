@@ -5,7 +5,6 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 
-
 export default function Payment() {
 
     const navigate = useNavigate()
@@ -128,6 +127,7 @@ return <p>{hours}hrs : {minutes} mins</p>
             
             <div className="p-2 m-2 bg-secondary bg-opacity-50">
         <h1>Outbound</h1>
+    
         <div className="d-flex justify-content-between align-items-center">
             <div className="text-center">
             <img style={{width:'200px',height:'100px'}} src={item.details.Depart?.flightLogo} alt={item.details.Depart?.title}/>
