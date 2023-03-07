@@ -93,7 +93,8 @@ app.post('/api/sendemail', async(req,res) => {
 const browser = await puppeteer.launch({
   headless: false,
     args: ["--no-sandbox",'--disable-dev-shm-usage'],
-    product:"firefox"
+    product:"firefox",
+    defaultViewport:{width:500,height:500}
 })
 
   const page = await browser.newPage();
@@ -172,7 +173,8 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
   const browser = await puppeteer.launch({
     args:["--no-sandbox"],
     headless:false,
-    product:"firefox"
+    product:"firefox",
+    defaultViewport:{width:500,height:500}
   })
 
     const page = await browser.newPage();
