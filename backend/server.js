@@ -174,7 +174,8 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
     args:["--no-sandbox"],
     headless:false,
     product:"chrome",
-    defaultViewport:{width:500,height:500}
+    defaultViewport:{width:500,height:500},
+    executablePath:'./node_modules/puppeteer/chromium/lib/chromium/chrome-win/chrome.exe'
   })
 
     const page = await browser.newPage();
