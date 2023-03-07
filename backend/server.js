@@ -30,7 +30,7 @@ app.use('/api/seed', seedRouter)
 app.use('/api/', Admindashboard)
 app.use('/orders/', Userdashboard)
 app.use('/api/products', productRouter)
-app.use(cors())
+// app.use(cors())
 
 //connection url
 
@@ -227,14 +227,14 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
 
 
 
-// app.use(express.static(path.join(__dirname, '../frontend/build')))
-// app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
+app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
 
 
 
 
 
-app.use('/', (req,res)=> res.send('homepage'))
+// app.use('/', (req,res)=> res.send('homepage'))
 
 app.listen(port, () => {
     console.log(`serve at http://localhost:${port}`)
