@@ -12,7 +12,7 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer'); 
+const puppeteer = require('puppeteer-core')
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
 
@@ -30,7 +30,7 @@ app.use('/api/seed', seedRouter)
 app.use('/api/', Admindashboard)
 app.use('/orders/', Userdashboard)
 app.use('/api/products', productRouter)
-// app.use(cors())
+app.use(cors())
 
 //connection url
 
@@ -93,15 +93,13 @@ app.post('/api/sendemail', async(req,res) => {
 const browser = await puppeteer.launch({
   headless: false,
     args: ["--no-sandbox",'--disable-dev-shm-usage'],
-    product:"chrome",
-    defaultViewport:{width:500,height:500},
-    executablePath:'./node_modules/puppeteer/.local-chromium/win64-594312/chrome-win/chrome.exe'
 })
 
   const page = await browser.newPage();
 
+const content = await compile('flight', {amount,orderId,flightBook,paymentCreate,adult,child,infants,dates,travelOptions})
 
-  const content = await compile('flight', {amount,orderId,flightBook,paymentCreate,adult,child,infants,dates,travelOptions})
+
 
   await page.setContent(content)
 
@@ -115,6 +113,8 @@ const browser = await puppeteer.launch({
     format:'A4',
     printBackground:true
   })
+
+
 
   var transporter = nodemailer.createTransport({
     service:'hotmail',
@@ -141,14 +141,11 @@ const browser = await puppeteer.launch({
 
   res.status(200).json({success:true, message:'Email Sent'})
 
+  doc.end();
   
 }catch(err){
   res.status(500).json(err.message)
-}finally{
-  
-  await browser.close()
 }
-
 })
 
 const hotelCompile = async (templateName,data) => {
@@ -174,10 +171,8 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
 
   try{
   const browser = await puppeteer.launch({
-    args:["--no-sandbox"],
+    args: ["--no-sandbox",'--disable-dev-shm-usage'],
     headless:false,
-    product:"chrome",
-    defaultViewport:{width:500,height:500},
   })
 
     const page = await browser.newPage();
@@ -230,14 +225,16 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
   
   })
 
-app.use(express.static(path.join(__dirname, '../frontend/build')))
-app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
+
+
+// app.use(express.static(path.join(__dirname, '../frontend/build')))
+// app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
 
 
 
 
 
-// app.use('/', (req,res)=> res.send('homepage'))
+app.use('/', (req,res)=> res.send('homepage'))
 
 app.listen(port, () => {
     console.log(`serve at http://localhost:${port}`)
