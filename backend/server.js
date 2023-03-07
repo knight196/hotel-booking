@@ -172,6 +172,7 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
   const browser = await puppeteer.launch({
     args:["--no-sandbox"],
     headless:false,
+    product:"firefox"
   })
 
     const page = await browser.newPage();
