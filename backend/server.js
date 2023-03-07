@@ -94,7 +94,8 @@ const browser = await puppeteer.launch({
   headless: false,
     args: ["--no-sandbox",'--disable-dev-shm-usage'],
     product:"chrome",
-    defaultViewport:{width:500,height:500}
+    defaultViewport:{width:500,height:500},
+    executablePath:'./node_modules/puppeteer/.local-chromium/win64-594312/chrome-win/chrome.exe'
 })
 
   const page = await browser.newPage();
@@ -104,7 +105,9 @@ const browser = await puppeteer.launch({
 
   await page.setContent(content)
 
-  await page.goto('https://hotel-booking-7efu.onrender.com')
+  await page.goto('https://hotel-booking-7efu.onrender.com', {
+    watiUntil:'networkidle0'
+  })
 
 
   await page.pdf({
@@ -175,7 +178,6 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
     headless:false,
     product:"chrome",
     defaultViewport:{width:500,height:500},
-    executablePath:'./node_modules/puppeteer/chromium/lib/chromium/chrome-win/chrome.exe'
   })
 
     const page = await browser.newPage();
