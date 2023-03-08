@@ -90,12 +90,16 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const browser = await puppeteer.launch({headless: true})
+    const browser = await puppeteer.launch({
+      defaultViewport: null,
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    })
 
  const page = await browser.newPage();
 
   
-    const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
+    const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email},{waitUntil:'networkidle0'})
 
     await page.setContent(content)
 
