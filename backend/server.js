@@ -12,7 +12,7 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-core')
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
