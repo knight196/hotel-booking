@@ -90,11 +90,7 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const browser = await puppeteer.launch({
-      defaultViewport: null,
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    })
+    const browser = await puppeteer.launch()
 
  const page = await browser.newPage();
 
