@@ -1,7 +1,6 @@
 const { join } = require('path');
-const { Configuration } = require('puppeteer');
 
-const puppeteerConfig: Configuration = {
+const puppeteerConfig = {
   cacheDirectory:join(__dirname, '.cache', 'puppeteer'),
 };
 
