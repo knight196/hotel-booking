@@ -12,7 +12,8 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer-core')
+const puppeteer = require('puppeteer')
+const configFile = require('puppeteer.config.cjs')
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
@@ -92,13 +93,13 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
-      executablePath:'/opt/render/project/.chrome'
+      executablePath:configFile
     })
 
  const page = await browser.newPage();
 
   
-    const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email},{waitUntil:'networkidle0'})
+    const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
 
     await page.setContent(content)
 
