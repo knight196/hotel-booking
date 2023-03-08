@@ -13,7 +13,6 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer')
-const configFile = require('puppeteer.config.cjs')
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
