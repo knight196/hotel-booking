@@ -1,14 +1,10 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "chrome": "npm path && npm find",
-    "path": "node -e \"console.log(require('puppeteer').executablePath())\" && echo \"File exists.\" || echo \"File does not exist.\"",
-    "find": "find / -name chrome | grep puppeteer | grep -v node_modules"
+    "server": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
