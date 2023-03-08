@@ -12,8 +12,7 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer-core')
-const {executablePath} = require('puppeteer')
+const puppeteer = require('puppeteer')
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
 
@@ -91,30 +90,20 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-const browser = await puppeteer.launch({
-  headless: false,
-    args: ["--no-sandbox",'--disable-dev-shm-usage'],
-    executablePath:executablePath('./node_modules/.cache/puppeteer/chrome/win64-1095492')
-})
+    const browser = await puppeteer.launch({headless: true})
 
-  const page = await browser.newPage();
+ const page = await browser.newPage();
 
-const content = await compile('flight', {amount,orderId,flightBook,paymentCreate,adult,child,infants,dates,travelOptions})
+  
+    const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
 
+    await page.setContent(content)
 
-
-  await page.setContent(content)
-
-  await page.goto('https://hotel-booking-7efu.onrender.com', {
-    watiUntil:'networkidle0'
-  })
-
-
-  await page.pdf({
-    path:'flight.pdf',
-    format:'A4',
-    printBackground:true
-  })
+    await page.pdf({
+      path:'flight.pdf',
+      format:'A4',
+      printBackground:true
+    })
 
 
 
@@ -142,8 +131,7 @@ const content = await compile('flight', {amount,orderId,flightBook,paymentCreate
   await transporter.sendMail(mailOptions)
 
   res.status(200).json({success:true, message:'Email Sent'})
-
-  doc.end();
+  await browser.close()
   
 }catch(err){
   res.status(500).json(err.message)
@@ -172,10 +160,9 @@ app.post('/api/hotelemail', async (req,res) => {
 const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.body
 
   try{
-  const browser = await puppeteer.launch({
-    args: ["--no-sandbox",'--disable-dev-shm-usage'],
-    headless:false,
-  })
+
+    const browser = await puppeteer.launch()
+  
 
     const page = await browser.newPage();
 
@@ -183,8 +170,6 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
     const content = await hotelCompile('hotel', {orderId,basket,travel,availabelRooms,availabelRoomId,amount,email})
 
     await page.setContent(content)
-
-    await page.goto('https://hotel-booking-7efu.onrender.com')
 
     await page.pdf({
       path:'hotel.pdf',
@@ -217,14 +202,13 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
 
     res.status(200).json({success:true,message:'email sent'})
   
+    await browser.close()
+    
+    process.exit()
     
   }catch(err){
     res.status(500).json(err.message)
-  }finally{
-    await browser.close()
-
   }
-  
   })
 
 
