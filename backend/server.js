@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer-core')
-
+const chromeLauncher = require('chrome-launcher') 
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
@@ -92,15 +92,20 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const browser = await puppeteer.launch({
-      args:['--disable-gpu','--headless','--print-to-pdf']
+    const browser = await chromeLauncher.launch({
+      headless:true,
+      chromeFlags: [
+        '--window-size=412,732',
+        '--disable-gpu',
+        headless ? '--headless' : ''
+      ]
     })
 
  const page = await browser.newPage();
 
   
     const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
-    
+
     await page.setContent(content)
 
     await page.pdf({
