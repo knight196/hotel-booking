@@ -92,7 +92,7 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
-      ignoreDefaultArgs: ['--disable-extensions'],
+      executablePath:process.env.PUPPETEER_EXECUTABLE_PATH 
     })
 
  const page = await browser.newPage();
