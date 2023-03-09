@@ -12,7 +12,7 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-core')
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
@@ -91,7 +91,9 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+      executablePath: 'export PATH="${C:\Program Files\Google\Chrome\Application\chrome.exe}:/opt/render/project/.render/chrome/opt/google/chrome/"'
+    })
 
  const page = await browser.newPage();
 
