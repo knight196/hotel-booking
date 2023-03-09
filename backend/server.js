@@ -13,6 +13,8 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer-core')
+const findChrome = require('chrome-finder')
+const chromePath = findChrome()
 
 
 dotenv.config({path:path.resolve(__dirname,'./.env')});
@@ -92,7 +94,7 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
-      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe/opt/render/project/.render/chrome/opt/google/chrome/'
+      executablePath:chromePath
     })
 
  const page = await browser.newPage();
