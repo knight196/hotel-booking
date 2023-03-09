@@ -92,13 +92,15 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+      args:['--disable-gpu','--headless','--print-to-pdf']
+    })
 
  const page = await browser.newPage();
 
   
     const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
-
+    
     await page.setContent(content)
 
     await page.pdf({
