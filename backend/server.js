@@ -93,11 +93,9 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await chromeLauncher.launch({
-      headless:true,
       chromeFlags: [
         '--window-size=1280,700',
-        '--disable-gpu',
-        headless ? '--headless' : ''
+        '--disable-gpu'
       ]
     })
 
@@ -141,7 +139,7 @@ app.post('/api/sendemail', async(req,res) => {
 
   res.status(200).json({success:true, message:'Email Sent'})
   await browser.close()
-  
+
 }catch(err){
   res.status(500).json(err.message)
 }
