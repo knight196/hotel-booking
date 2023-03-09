@@ -95,7 +95,7 @@ app.post('/api/sendemail', async(req,res) => {
     const browser = await chromeLauncher.launch({
       headless:true,
       chromeFlags: [
-        '--window-size=412,732',
+        '--window-size=1280,700',
         '--disable-gpu',
         headless ? '--headless' : ''
       ]
