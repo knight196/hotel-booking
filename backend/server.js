@@ -92,8 +92,7 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
-      executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',
-      args:[ '--flag-switches-begin' ,'--flag-switches-end']
+      executablePath:'./node_modules/puppeteer/.local-chromium/win64-782078/chrome-win/chrome.exe'
     })
 
  const page = await browser.newPage();
