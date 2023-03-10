@@ -94,13 +94,9 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const chrome = await chromeLauncher.launch({
-      chromeFlags:['--headless']
-    })
-    const response = await axios.get(`http://localhost:${chrome.port}/json/version`)
-   const {webSocketDebuggerUrl} = response.data
 
-   const browser = await puppeteer.connect({browserWSEndpoint:webSocketDebuggerUrl})
+
+   const browser = await puppeteer.connect()
 
  const page = await browser.newPage();
 
