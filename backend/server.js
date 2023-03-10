@@ -92,12 +92,13 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
+      executablePath: process.env.CHROMIUM_PATH,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
 
  const page = await browser.newPage();
 
- await page.goto('https://www.google.com', {waitUntil:'networkidle0'})
+
   
     const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
 
