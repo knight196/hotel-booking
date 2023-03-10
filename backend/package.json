@@ -29,6 +29,7 @@
     "nodemailer": "^6.9.1",
     "path": "^0.12.7",
     "puppeteer": "^19.7.4",
+    "puppeteer-core": "^19.7.4",
     "stripe": "^11.6.0"
   },
   "engines": {
