@@ -13,6 +13,8 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer')
+const chromeLauncher = require('chrome-launcher')
+const axios = require('axios')
 
 
 
@@ -92,7 +94,13 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
 
-    const browser = await puppeteer.launch()
+    const chrome = await chromeLauncher.launch({
+      chromeFlags:['--headless']
+    })
+    const response = await axios.get(`http://localhost:${chrome.port}/json/version`)
+   const {webSocketDebuggerUrl} = response.data
+
+   const browser = await puppeteer.connect({browserWSEndpoint:webSocketDebuggerUrl})
 
  const page = await browser.newPage();
 
@@ -101,6 +109,7 @@ app.post('/api/sendemail', async(req,res) => {
     const content = await compile('flight', {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email})
 
     await page.setContent(content)
+
 
     await page.pdf({
       path:'flight.pdf',
