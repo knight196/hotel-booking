@@ -92,7 +92,8 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath:'./node_modules/chromium/lib/chromium/chrome-win/chrome.exe'
     })
 
  const page = await browser.newPage();
