@@ -12,7 +12,7 @@ const productRouter = require('./routes/Productroutes')
 const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
-const puppeteer = require('puppeteer-core')
+const puppeteer = require('puppeteer')
 
 
 
