@@ -92,7 +92,6 @@ app.post('/api/sendemail', async(req,res) => {
   try{
 
     const browser = await puppeteer.launch({
-      executablePath:process.env.PUPPETEER_DOWNLOAD_PATH,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
 
