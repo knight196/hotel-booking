@@ -13,8 +13,6 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer')
-const chromeLauncher = require('chrome-launcher')
-const axios = require('axios')
 
 
 
