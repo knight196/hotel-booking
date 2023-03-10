@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "chromium@3.0.3 postinstall /opt/render/project/src/backend/node_modules/chromium",
     "start": "node server.js",
     "server": "nodemon server.js"
   },
