@@ -92,7 +92,7 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
     const browser =await puppeteer.launch({
-        executablePath: '/usr/bin/chromium-browser',
+        executablePath: './node_modules/puppeteer/lib/cjs/puppeteer/getConfiguration.js',
          ignoreDefaultArgs: ['--disable-extensions']
     });
 
