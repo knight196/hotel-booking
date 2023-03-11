@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/knight196/hotel-booking/issues"
   },
-  "homepage": "https://github.com/knight196/hotel-booking#readme"
+  "homepage": "https://github.com/knight196/hotel-booking#readme",
+  "dependencies": {
+    "puppeteer": "^19.7.4"
+  }
 }
