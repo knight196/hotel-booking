@@ -92,6 +92,7 @@ app.post('/api/sendemail', async(req,res) => {
   
   try{
     const browser =await puppeteer.launch({
+      executablePath:'/opt/render/project/.chrome',
         ignoreDefaultArgs: ['--disable-extensions'],
         headless: true,
         args: ['--no-sandbox', "--disabled-setupid-sandbox"]
