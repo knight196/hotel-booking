@@ -91,10 +91,7 @@ app.post('/api/sendemail', async(req,res) => {
 
   
   try{
-    const browser =await puppeteer.launch({
-        executablePath: './node_modules/puppeteer/lib/cjs/puppeteer/getConfiguration.js',
-         ignoreDefaultArgs: ['--disable-extensions']
-    });
+    const browser =await puppeteer.launch();
 
  const page = await browser.newPage();
 
