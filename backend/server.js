@@ -94,7 +94,10 @@ app.post('/api/sendemail', async(req,res) => {
 
 
 
-   const browser = await puppeteer.launch()
+   const browser = await puppeteer.launch({
+    product:'chrome',
+    headless:false,   
+   })
 
  const page = await browser.newPage();
 
