@@ -89,12 +89,9 @@ hbs.registerHelper('conditional', function (passedData) {
 app.post('/api/sendemail', async(req,res) => {
   const {flightBook,orderId,paymentCreate,adult,child,infants,dates,travelOptions,amount,email} = req.body
 
-  const browserFetcher = puppeteer.createBrowserFetcher();
-  let revisionInfo = await browserFetcher.download('1095492');
   
   try{
     const browser =await puppeteer.launch({
-        executablePath: revisionInfo.executablePath,
         ignoreDefaultArgs: ['--disable-extensions'],
         headless: true,
         args: ['--no-sandbox', "--disabled-setupid-sandbox"]
