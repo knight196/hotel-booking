@@ -123,12 +123,10 @@ app.post('/api/sendemail', async(req,res) => {
 
   var handlebarOptions = {
     viewEngine:{
-      extName:'.hbs',
-      partialDir:path.resolve('./flight'),
-      defaultLayout:false
+      extName:'hbs',
+      defaultLayout:false,
+      layoutDir:'./flight'
     },
-    viewPath:path.resolve('./flight'),
-    extName:'.hbs'
   }
 
   transporter.use('compile', handlebars(handlebarOptions))
