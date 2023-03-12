@@ -66,7 +66,7 @@ app.post("/payment/create", async (req, res) => {
 });
 
 const compile = async (templateName,data) => {
-  const filepath = path.join(process.cwd(),`${templateName}.hbs`)
+  const filepath = path.resolve(__dirname, process.cwd(),`${templateName}.hbs`)
 
 const html = await fs.readFile(filepath,'utf-8')
 
@@ -120,16 +120,6 @@ app.post('/api/sendemail', async(req,res) => {
       pass:process.env.pass
     }
   })
-
-  var handlebarOptions = {
-    viewEngine:{
-      extName:'hbs',
-      defaultLayout:false,
-      layoutDir:'./flight'
-    },
-  }
-
-  transporter.use('compile', handlebars(handlebarOptions))
 
     var mailOptions = {
       from:process.env.user,
