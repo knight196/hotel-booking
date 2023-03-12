@@ -91,7 +91,9 @@ app.post('/api/sendemail', async(req,res) => {
 
   
   try{
-    const browser =await puppeteer.launch();
+    const browser =await puppeteer.launch({
+      ignoreDefaultArgs:['--disable-extensions']
+    });
 
  const page = await browser.newPage();
 
