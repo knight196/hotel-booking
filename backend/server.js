@@ -13,6 +13,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer')
+const handlebars = require('nodemailer-express-handlebars')
 
 
 
@@ -119,6 +120,18 @@ app.post('/api/sendemail', async(req,res) => {
       pass:process.env.pass
     }
   })
+
+  var handlebarOptions = {
+    viewEngine:{
+      extName:'.hbs',
+      partialDir:path.resolve('./flight'),
+      defaultLayout:false
+    },
+    viewPath:path.resolve('./flight'),
+    extName:'.hbs'
+  }
+
+  transporter.use('compile', handlebars(handlebarOptions))
 
     var mailOptions = {
       from:process.env.user,
