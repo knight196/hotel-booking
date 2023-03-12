@@ -66,7 +66,7 @@ app.post("/payment/create", async (req, res) => {
 });
 
 const compile = async (templateName,data) => {
-  const filepath = path.resolve(__dirname, process.cwd(),`${templateName}.hbs`)
+  const filepath = path.resolve(process.cwd(),`${templateName}.hbs`)
 
 const html = await fs.readFile(filepath,'utf-8')
 
