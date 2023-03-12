@@ -144,7 +144,7 @@ app.post('/api/sendemail', async(req,res) => {
 
 const hotelCompile = async (templateName,data) => {
 
-const filepath = path.join(process.cwd(), `${templateName}.hbs`)
+const filepath = path.resolve(__dirname, `${templateName}.hbs`)
 
 const html = await fs.readFile(filepath,'utf-8')
 
