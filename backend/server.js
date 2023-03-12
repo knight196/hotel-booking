@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs-extra')
 const hbs = require('handlebars')
 const puppeteer = require('puppeteer')
-const handlebars = require('nodemailer-express-handlebars')
+
 
 
 
@@ -92,9 +92,7 @@ app.post('/api/sendemail', async(req,res) => {
 
   
   try{
-    const browser =await puppeteer.launch({
-      ignoreDefaultArgs:['--disable-extensions']
-    });
+    const browser =await puppeteer.launch();
 
  const page = await browser.newPage();
 
