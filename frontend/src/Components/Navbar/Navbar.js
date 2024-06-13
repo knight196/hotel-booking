@@ -25,7 +25,7 @@ const signOut = () => {
   return (
     <div className="bg-primary p-2 bg-opacity-50">
     <div className="d-flex justify-content-between align-items-center">
-      <Link to="/" className="text-dark" style={{textDecoration:'none'}}><h1>HotelBook</h1></Link>
+      <Link to="/" className="text-dark" style={{textDecoration:'none'}}><h1>Travely</h1></Link>
      
      <div>
       <div>
