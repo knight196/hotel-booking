@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <div  style={{flexWrap:'wrap'}} className="p-2 bg-primary bg-opacity-50 d-flex justify-content-between">
-
-
+    <div  style={{flexWrap:'wrap'}} className="p-2 bg-primary w-100 bg-opacity-50 d-flex justify-content-between">
 
 <div className="d-flex">
 
