@@ -8,6 +8,7 @@ import {format} from 'date-fns'
 import { useStateValue } from '../../../StateProvider';
 import slideshow from './data'
 import flightdata from './flight'
+import hoteldata from './hotel'
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -75,20 +76,7 @@ export default function Home() {
       useEffect(() => {
         localStorage.setItem('travel', JSON.stringify(travel))
       },[travel])
-  
-      const [toggleState,settoggleState] = useState(1)
-  
-      const [hide,sethide] = useState(false)
-  
-      const toggleTab = (index) => {
-        settoggleState(index)
-        sethide(true)
-  
-        setTimeout(() => {
-            sethide(false)
-        },5000)
-  
-      }
+
   
       //slideshow
   const [current,setCurrent] = useState(0)
@@ -134,6 +122,22 @@ export default function Home() {
   if(!Array.isArray(slide) || slide.length <= 0){
     return null
   }
+
+  function priceDiscount(actualprice, finalprice) {
+  
+
+   const resultOne = actualprice - finalprice
+
+   const resultTwo = resultOne / actualprice
+
+   const resultThree = resultTwo * 100
+
+   const finalresult = Math.floor(resultThree)
+
+   return <>{finalresult}%</>
+
+  }
+
   return (
     <>
       <div className="carousel">
@@ -176,6 +180,65 @@ export default function Home() {
 
 </div>
 
+<div className="banner">
+
+  <div>
+    <h5>Exclusive deals</h5>
+    <p>For hundreds of destinations</p>
+  </div>
+
+  <div>
+    <h5>Book Holidays</h5>
+    <p>Deposit from £99</p>
+  </div>
+
+  <div>
+    <h5>Flexible Payment options</h5>
+      <p>Low Deposit</p>
+  </div>
+
+</div>
+
+<div>
+
+<h4 className="text-center">Latest Exclusive Offers</h4>
+
+<Swiper
+      // install Swiper modules
+      modules={[Navigation]}
+      spaceBetween={20}
+      slidesPerView={2}
+      navigation
+      className="p-4"
+      loop={true}
+      breakpoints={{
+      200:{
+          slidesPerview:2
+        },
+        720:{
+          slidesPerView:3
+        }
+      }}
+>
+  
+    {hoteldata.map(item => (
+      <>
+        <SwiperSlide className="hotel-card">
+          <img src={item.image} alt={item.title}/>
+          <div className="p-2">
+          <p>{item.title}</p>
+          <p className="text-danger">3 nights from: £ {item.price} pp</p>
+          <button className="btn btn-primary w-100">View Deal</button>
+          <p className="offers">save up to {priceDiscount(item.price,item.offers)}</p>
+          </div>
+        </SwiperSlide>
+      </>
+    ))}
+  
+    </Swiper>
+
+</div>
+
 <div className="my-1">
 
     <h4 className="text-center">Popular Holiday Destination</h4>
@@ -190,47 +253,6 @@ export default function Home() {
 ))}
 </div>
 
-</div>
-
-<div className="my-1">
-
-<h4 className="text-center">Why we are different</h4>
-
-<div className="experiences">
-
-<div className="card p-2">
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
-  <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
-</svg>
-<h5>Tailor-Made Packages</h5>
-<p>
-  When it comes to delivering the best planned holiday package to you, we strive to exceed
-  your expectations. For us, it has to be spot on. We do what we do in the ideal way possible.
-</p>
-</div>
-
-<div className="card p-2">
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-</svg>
-<h5>Best Experience</h5>
-<p>At Travely, we choose to put forth an essence of our own expertise and finished experiences into 
-  our services and method of planning.
-</p>
-</div>
-
-<div className="card p-2">
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-gem" viewBox="0 0 16 16">
-  <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6zm11.386 3.785-1.806-2.41-.776 2.413zm-3.633.004.961-2.989H4.186l.963 2.995zM5.47 5.495 8 13.366l2.532-7.876zm-1.371-.999-.78-2.422-1.818 2.425zM1.499 5.5l5.113 6.817-2.192-6.82zm7.889 6.817 5.123-6.83-2.928.002z"/>
-</svg>
-<h5>Exquisite Service</h5>
-<p>From the moment you make the first call to enquire, our service are geared up. From the 
-  time booking to your stay and well after the trip as well, we will guide you and be at your back.
-</p>
-</div>
-
-</div>
 </div>
 
 <div>
@@ -278,6 +300,117 @@ export default function Home() {
 
 <div>
 </div>
+
+
+<div className="my-1">
+
+<h4 className="text-center">Why we are different</h4>
+
+<div className="experiences">
+
+<div className="card p-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+  <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
+</svg>
+<h5>Tailor-Made Packages</h5>
+<p>
+  When it comes to delivering the best planned holiday package to you, we strive to exceed
+  your expectations. For us, it has to be spot on. We do what we do in the ideal way possible.
+</p>
+</div>
+
+<div className="card p-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+</svg>
+<h5>Best Experience</h5>
+<p>At Travely, we choose to put forth an essence of our own expertise and finished experiences into 
+  our services and method of planning.
+</p>
+</div>
+
+<div className="card p-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-gem" viewBox="0 0 16 16">
+  <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6zm11.386 3.785-1.806-2.41-.776 2.413zm-3.633.004.961-2.989H4.186l.963 2.995zM5.47 5.495 8 13.366l2.532-7.876zm-1.371-.999-.78-2.422-1.818 2.425zM1.499 5.5l5.113 6.817-2.192-6.82zm7.889 6.817 5.123-6.83-2.928.002z"/>
+</svg>
+<h5>Exquisite Service</h5>
+<p>From the moment you make the first call to enquire, our service are geared up. From the 
+  time booking to your stay and well after the trip as well, we will guide you and be at your back.
+</p>
+</div>
+
+</div>
+</div>
+
+<div className="positive-review">
+
+<div className="positive-review-img">
+<img src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2021/11/30/Dreamy-beaches-in-middle-east.jpg" alt=""/>
+</div>
+
+<div className="p-2">
+<h3>Why our customers love us?</h3>
+<p>Offering dependable travel solutions from the UK to the world over, we've gained the trust of a loyal
+  customer base. Our customers know they can rely on us to offer the best prices and to provide impartial, 
+  expert advice on finding travel solutions to match their interests, time and budget.
+</p>
+
+<h5>Why book with Travely</h5>
+
+<small>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
+  <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+</svg>
+<p1>Exclusive deals for hundreds of destinations</p1>
+</small>
+
+<br></br>
+
+<small>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
+  <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+</svg>
+<p1>24/7 expert assistance</p1>
+</small>
+
+<br></br>
+
+<small>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
+  <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+</svg>
+<p1>Flexible payment options</p1>
+</small>
+
+<br></br>
+<small>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
+  <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+</svg>
+<p1>No fee on credit & debit card transactions</p1>
+</small>
+
+</div>
+
+</div>
+
+<div className="subscribe text-center bg-warning">
+
+<h5>Subscribe for latest deals</h5>
+<p>Sign up now and get the best holiday and flight straight in your inbox!</p>
+
+<div>
+  <input type="email" placeholder="subscribe to our newsletter"/>
+  <button>Sign up</button>
+</div>
+
+</div>
+
 
     </>
   )

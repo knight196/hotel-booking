@@ -195,7 +195,7 @@ const {basket,travel,availabelRooms,availabelRoomId,amount,email,orderId} = req.
       from:process.env.user,
       to:email,
       subject:'Hotel Confirmation',
-      text:'Thank you for booking your hotel with us. If you have any problems please do not hesitate to contact us.',
+      text:'Thank you for booking your hotel with us. If you have any problem please do not hesitate to contact us.',
       attachments:[{
         filename:'hotel.pdf',
         path:'hotel.pdf'
